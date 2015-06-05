@@ -35,3 +35,33 @@ public class Solution {
        return list;     
     }
 }
+//第二种方法实现真正的后序非递归
+public class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+       LinkedList<TreeNode> node=new LinkedList<TreeNode>();
+       ArrayList<Integer> list=new ArrayList<Integer>();
+       
+         TreeNode visited=new TreeNode(-1);
+         TreeNode treenode=root;
+       while(!node.isEmpty() || treenode!=null)
+       {
+           while(treenode!=null)
+            {
+                node.push(treenode);
+                treenode=treenode.left;
+            }
+          treenode=node.peek();
+          if(treenode.right==null || visited==treenode.right)
+           {
+             list.add(treenode.val);  
+             visited=treenode;
+             treenode=null;
+             node.pop();
+           } 
+          else
+            treenode=treenode.right;
+       }
+ 
+       return list;     
+    }
+}
