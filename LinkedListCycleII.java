@@ -33,7 +33,7 @@ public class Solution {
          while(cycleNode!=first)
           {
              cycleNode=cycleNode.next;
-             second=first.next;
+             first=first.next;
           }
          return cycleNode;
        }     
